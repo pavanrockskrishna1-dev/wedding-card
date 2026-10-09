@@ -6,11 +6,12 @@ import LanguagePickerScene from "@/scenes/LanguagePickerScene";
 import StainedGlassScene from "@/scenes/StainedGlassScene";
 import CordScene from "@/scenes/CordScene";
 import CoupleScene from "@/scenes/CoupleScene";
+import JesusBlessingScene from "@/scenes/JesusBlessingScene";
 import StoryScene from "@/scenes/StoryScene";
 import DetailsScene from "@/scenes/DetailsScene";
 import BlessingScene from "@/scenes/BlessingScene";
 
-const SCENE_KEYS = ["glass", "cord", "couple", "story", "details", "blessing"] as const;
+const SCENE_KEYS = ["glass", "cord", "couple", "jesusBlessing", "story", "details", "blessing"] as const;
 
 export default function App() {
   const params = useMemo(getUrlParams, []);
@@ -48,6 +49,7 @@ export default function App() {
         {current === "glass" && <StainedGlassScene lang={lang} guestName={guestName} />}
         {current === "cord" && <CordScene lang={lang} />}
         {current === "couple" && <CoupleScene lang={lang} />}
+        {current === "jesusBlessing" && <JesusBlessingScene lang={lang} />}
         {current === "story" && <StoryScene lang={lang} />}
         {current === "details" && <DetailsScene lang={lang} />}
         {current === "blessing" && <BlessingScene lang={lang} />}

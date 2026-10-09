@@ -11,6 +11,11 @@
 
 export type LangCode = "en" | "te" | "hi" | "or";
 
+// Toggle: when true, the Jesus Blessing scene shows a respectful silhouette
+// figure of Jesus. When false, only the light rays and two glowing blessing
+// hands from above are shown, with the same verse.
+export const SHOW_JESUS_FIGURE = true;
+
 export const LANGUAGES: { code: LangCode; nativeLabel: string; englishLabel: string; fontClass: string }[] = [
   { code: "en", nativeLabel: "English", englishLabel: "English", fontClass: "font-noto-en" },
   { code: "te", nativeLabel: "తెలుగు", englishLabel: "Telugu", fontClass: "font-noto-te" },
@@ -69,6 +74,11 @@ interface Translation {
     subtext: string;
     brideLabel: string;
     groomLabel: string;
+  };
+  jesusBlessing: {
+    eyebrow: string;
+    verseRef: string;
+    verseText: string;
   };
   story: {
     eyebrow: string;
@@ -141,6 +151,12 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
         "Together with their families, request the honour of your presence as they begin their new life in Christ.",
       brideLabel: "The Bride",
       groomLabel: "The Groom",
+    },
+    jesusBlessing: {
+      eyebrow: "The Blessing of the Lord",
+      verseRef: "Numbers 6:24-26",
+      verseText:
+        "The LORD bless thee, and keep thee: The LORD make his face shine upon thee, and be gracious unto thee: The LORD lift up his countenance upon thee, and give thee peace.",
     },
     story: {
       eyebrow: "Our Journey",
@@ -232,6 +248,12 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
       brideLabel: "వధువు",
       groomLabel: "వరుడు",
     },
+    jesusBlessing: {
+      eyebrow: "ప్రభువు ఆశీర్వాదం",
+      verseRef: "సంఖ్యాకాండము 6:24-26",
+      verseText:
+        "యెహోవా నిన్ను ఆశీర్వదించి నిన్ను కాపాడునుగాక; యెహోవా నీమీద తన సన్నిధిని ప్రకాశింపజేసి నిన్ను కరుణించునుగాక; యెహోవా నీమీద తన సన్నిధి కాంతి ఉదయింపజేసి నీకు సమాధానము కలుగజేయునుగాక.",
+    },
     story: {
       eyebrow: "మా ప్రయాణం",
       heading: "మా కథ",
@@ -322,6 +344,12 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
       brideLabel: "वधू",
       groomLabel: "वर",
     },
+    jesusBlessing: {
+      eyebrow: "प्रभु का आशीर्वाद",
+      verseRef: "गिनती 6:24-26",
+      verseText:
+        "यहोवा तुझे आशीष दे और तेरी रक्षा करे; यहोवा तुझ पर अपने मुख का प्रकाश चमकाए, और तुझ पर अनुग्रह करे; यहोवा अपना मुख तेरी ओर करे, और तुझे शान्ति दे।",
+    },
     story: {
       eyebrow: "हमारी यात्रा",
       heading: "हमारी कहानी",
@@ -411,6 +439,11 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
         "ଖ୍ରୀଷ୍ଟଙ୍କଠାରେ ନିଜ ନୂତନ ଜୀବନ ଆରମ୍ଭ କରୁଥିବା ଏହି ଶୁଭ ଅବସରରେ, ସେମାନେ ନିଜ ପରିବାର ସହିତ ମିଶି ଆପଣଙ୍କ ଉପସ୍ଥିତିର ସମ୍ମାନ ପ୍ରାର୍ଥନା କରନ୍ତି।",
       brideLabel: "କନ୍ୟା",
       groomLabel: "ବର",
+    },
+    jesusBlessing: {
+      eyebrow: "ପ୍ରଭୁଙ୍କ ଆଶୀର୍ବାଦ",
+      verseRef: "ଗଣନା ପୁସ୍ତକ 6:24-26",
+      verseText: "ODIA VERSE NEEDED",
     },
     story: {
       eyebrow: "ଆମର ଯାତ୍ରା",
