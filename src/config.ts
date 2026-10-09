@@ -3,13 +3,11 @@
 // Every scene component reads from this file. Nothing is hard-coded elsewhere.
 // Scripture quotations are taken from Bible Society of India (BSI) editions:
 //   - Telugu:  TELUBSI (Bible Society of India, O.V.)
-//   - Hindi:   HINOVBSI (पवित्र बाइबिल OV Re-edited, Bible Society of India)
-//   - Odia:    ODIAOV-BSI (ପବିତ୍ର ବାଇବଲ OV Re-edited, Bible Society of India)
 //   - English: King James Version (the traditional English text used
 //     alongside BSI vernacular editions in Indian churches)
 // ============================================================================
 
-export type LangCode = "en" | "te" | "hi" | "or";
+export type LangCode = "en" | "te";
 
 // Toggle: when true, the Jesus Blessing scene shows a respectful silhouette
 // figure of Jesus. When false, only the light rays and two glowing blessing
@@ -23,8 +21,6 @@ export const NARRATION_ON = true;
 export const LANGUAGES: { code: LangCode; nativeLabel: string; englishLabel: string; fontClass: string }[] = [
   { code: "en", nativeLabel: "English", englishLabel: "English", fontClass: "font-noto-en" },
   { code: "te", nativeLabel: "తెలుగు", englishLabel: "Telugu", fontClass: "font-noto-te" },
-  { code: "hi", nativeLabel: "हिंदी", englishLabel: "Hindi", fontClass: "font-noto-hi" },
-  { code: "or", nativeLabel: "ଓଡ଼ିଆ", englishLabel: "Odia", fontClass: "font-noto-or" },
 ];
 
 // Couple + event facts (dummy data) — language-independent
@@ -33,9 +29,7 @@ export const WEDDING = {
   names: {
     en: { groom: "Ashish Kamada", bride: "Easter Rani", groomShort: "Ashish", brideShort: "Easter" },
     te: { groom: "ఆశీష్ కమాడ", bride: "ఈస్టర్ రాణి", groomShort: "ఆశీష్", brideShort: "ఈస్టర్" },
-    hi: { groom: "आशीष कमाडा", bride: "ईस्टर रानी", groomShort: "आशीष", brideShort: "ईस्टर" },
-    or: { groom: "ଆଶୀଷ କମାଡା", bride: "ଇଷ୍ଟର ରାଣୀ", groomShort: "ଆଶୀଷ", brideShort: "ଇଷ୍ଟର" },
-  } as Record<"en" | "te" | "hi" | "or", { groom: string; bride: string; groomShort: string; brideShort: string }>,
+  } as Record<"en" | "te", { groom: string; bride: string; groomShort: string; brideShort: string }>,
   dateISO: "2026-12-12T10:30:00+05:30",
   mapsLink: "https://maps.google.com/?q=St+Marys+Church+Hyderabad",
   receptionMapsLink: "https://maps.google.com/?q=Grand+Hall+Hyderabad",
@@ -311,197 +305,6 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
       rsvp: "మా కథలో భాగమైనందుకు ధన్యవాదాలు.",
     },
   },
-
-  hi: {
-    meta: { fontClass: "font-noto-hi", headingFontClass: "font-noto-hi" },
-    common: {
-      next: "आगे",
-      begin: "आरंभ करें",
-      swipeHint: "ऊपर स्वाइप करें या आगे टैप करें",
-      tapHint: "जारी रखने के लिए टैप करें",
-      dearPrefix: "प्रिय",
-      defaultGuest: "प्रिय अतिथि",
-      loading: "लोड हो रहा है…",
-    },
-    languagePicker: {
-      title: "आप आमंत्रित हैं",
-      subtitle: "कृपया अपनी भाषा चुनें",
-    },
-    stainedGlass: {
-      eyebrow: "एक पवित्र बंधन",
-      heading: "स्वागत है",
-      message:
-        "परमेश्वर की कृपा से, दोनों परिवार आपको इस विवाह समारोह का साक्षी बनने के लिए हार्दिक आमंत्रण देते हैं",
-    },
-    cord: {
-      eyebrow: "परमेश्वर का वचन",
-      verseRef: "सभोपदेशक 4:12",
-      verseText:
-        "यदि कोई अकेले पर प्रबल हो तो हो, परन्तु दो उसका सामना कर सकेंगे। जो डोरी तीन तागे से बटी हो वह जल्दी नहीं टूटती।",
-      caption: "परमेश्वर, वधू और वर — एक साथ गुंथे हुए।",
-    },
-    couple: {
-      eyebrow: "दो हृदय, एक विश्वास",
-      heading: `${WEDDING.names.hi.groomShort} और ${WEDDING.names.hi.brideShort}`,
-      subtext:
-        "अपने परिवारों के साथ मिलकर, मसीह में अपने नए जीवन की शुरुआत के इस शुभ अवसर पर आपकी उपस्थिति की विनम्र प्रार्थना करते हैं।",
-      brideLabel: "वधू",
-      groomLabel: "वर",
-    },
-    jesusBlessing: {
-      eyebrow: "प्रभु का आशीर्वाद",
-      verseRef: "गिनती 6:24-26",
-      verseText:
-        "यहोवा तुझे आशीष दे और तेरी रक्षा करे; यहोवा तुझ पर अपने मुख का प्रकाश चमकाए, और तुझ पर अनुग्रह करे; यहोवा अपना मुख तेरी ओर करे, और तुझे शान्ति दे।",
-    },
-    story: {
-      eyebrow: "हमारी यात्रा",
-      heading: "हमारी कहानी",
-      cards: [
-        {
-          year: "2021",
-          title: "पहली मुलाक़ात",
-          desc: `${WEDDING.names.hi.groomShort} और ${WEDDING.names.hi.brideShort} पहली बार एक चर्च युवा सभा में मिले थे — यह एक नमूना पाठ है।`,
-        },
-        {
-          year: "2024",
-          title: "प्रस्ताव",
-          desc: `परिवार और मित्रों के बीच ${WEDDING.names.hi.groomShort} ने ${WEDDING.names.hi.brideShort} से विवाह का प्रस्ताव रखा — यह एक नमूना कहानी है।`,
-        },
-        {
-          year: "2026",
-          title: "विवाह",
-          desc: "इस आशीषित बंधन का उत्सव मनाने के लिए दोनों परिवार तैयारी कर रहे हैं — नमूना पाठ।",
-        },
-      ],
-    },
-    details: {
-      eyebrow: "तारीख़ याद रखें",
-      heading: "विवाह का विवरण",
-      churchLabel: "पवित्र विवाह",
-      churchName: "सेंट मैरी चर्च, हैदराबाद",
-      churchAddress: "12 चर्च रोड, हैदराबाद, तेलंगाना",
-      dateLabel: "तारीख़ और समय",
-      dateDisplay: "शनिवार, 12 दिसंबर 2026",
-      timeDisplay: "सुबह 10:30",
-      receptionLabel: "स्वागत समारोह",
-      receptionName: "ग्रांड हॉल, हैदराबाद",
-      receptionAddress: "45 सेलिब्रेशन एवेन्यू, हैदराबाद, तेलंगाना",
-      directionsBtn: "चर्च के लिए दिशा-निर्देश",
-      receptionDirectionsBtn: "स्वागत समारोह के लिए दिशा-निर्देश",
-    },
-    blessing: {
-      eyebrow: "अंतिम आशीर्वाद",
-      heading: "कृतज्ञ हृदय से",
-      verseRef2: "1 कुरिन्थियों 13:4-7",
-      verseText2:
-        "प्रेम धीरजवन्त है, और कृपालु है; प्रेम डाह नहीं करता; प्रेम अपनी बड़ाई नहीं करता, और फूलता नहीं, वह अनरीति नहीं चलता, वह अपनी भलाई नहीं चाहता, झुँझलाता नहीं, बुरा नहीं मानता। कुकर्म से आनन्दित नहीं होता, परन्तु सत्य से आनन्दित होता है। वह सब बातें सह लेता है, सब बातों की प्रतीति करता है, सब बातों की आशा रखता है, सब बातों में धीरज धरता है।",
-      verseRef3: "रूत 1:16",
-      verseText3:
-        "रूत बोली, तू मुझ से यह विनती न कर, कि मुझे त्याग या छोड़कर लौट जा; क्योंकि जिधर तू जाए उधर मैं भी जाऊँगी; जहाँ तू टिके वहाँ मैं भी टिकूँगी; तेरे लोग मेरे लोग होंगे, और तेरा परमेश्‍वर मेरा परमेश्‍वर होगा।",
-      closing:
-        "हम आपके प्रेम और प्रार्थनाओं के लिए परमेश्वर का धन्यवाद करते हैं, और इस आनंदमय दिन को आपके साथ मनाने की प्रतीक्षा कर रहे हैं।",
-      signature: `प्रेम सहित, ${WEDDING.names.hi.groom} और ${WEDDING.names.hi.bride}`,
-      musicOn: "संगीत चालू",
-      musicOff: "संगीत बंद",
-      rsvp: "हमारी कहानी का हिस्सा बनने के लिए धन्यवाद।",
-    },
-  },
-
-  or: {
-    meta: { fontClass: "font-noto-or", headingFontClass: "font-noto-or" },
-    common: {
-      next: "ପରବର୍ତ୍ତୀ",
-      begin: "ଆରମ୍ଭ କରନ୍ତୁ",
-      swipeHint: "ଉପରକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ କିମ୍ବା ପରବର୍ତ୍ତୀ ଦବାନ୍ତୁ",
-      tapHint: "ଜାରି ରଖିବାକୁ ଦବାନ୍ତୁ",
-      dearPrefix: "ପ୍ରିୟ",
-      defaultGuest: "ପ୍ରିୟ ଅତିଥି",
-      loading: "ଲୋଡ୍ ହେଉଛି…",
-    },
-    languagePicker: {
-      title: "ଆପଣ ନିମନ୍ତ୍ରିତ",
-      subtitle: "ଦୟାକରି ଆପଣଙ୍କ ଭାଷା ବାଛନ୍ତୁ",
-    },
-    stainedGlass: {
-      eyebrow: "ଏକ ପବିତ୍ର ବନ୍ଧନ",
-      heading: "ସ୍ୱାଗତମ୍",
-      message:
-        "ପରମେଶ୍ଵରଙ୍କ କୃପାରୁ, ଦୁଇ ପରିବାର ଏହି ବିବାହ ଉତ୍ସବର ସାକ୍ଷୀ ହେବାକୁ ଆପଣଙ୍କୁ ଆନନ୍ଦର ସହ ନିମନ୍ତ୍ରଣ କରନ୍ତି",
-    },
-    cord: {
-      eyebrow: "ପରମେଶ୍ଵରଙ୍କ ବାକ୍ୟ",
-      verseRef: "ଉପଦେଶକ 4:12",
-      verseText:
-        "ଯେବେ କେହି ଏକାକୀ ଥିବା ଲୋକକୁ ପରାସ୍ତ କରେ, ତେବେ ଦୁଇ ଜଣ ତାହାର ପ୍ରତିବାଧା କରିବେ; ପୁଣି, ତ୍ରିଗୁଣ ରଜ୍ଜୁ ଶୀଘ୍ର ଛିଣ୍ଡି ଯାଏ ନାହିଁ।",
-      caption: "ପରମେଶ୍ଵର, କନ୍ୟା ଓ ବର — ଏକାଠି ବୁଣା ହୋଇ ଏକ ହୋଇଛନ୍ତି।",
-    },
-    couple: {
-      eyebrow: "ଦୁଇ ହୃଦୟ, ଏକ ବିଶ୍ୱାସ",
-      heading: `${WEDDING.names.or.groomShort} ଓ ${WEDDING.names.or.brideShort}`,
-      subtext:
-        "ଖ୍ରୀଷ୍ଟଙ୍କଠାରେ ନିଜ ନୂତନ ଜୀବନ ଆରମ୍ଭ କରୁଥିବା ଏହି ଶୁଭ ଅବସରରେ, ସେମାନେ ନିଜ ପରିବାର ସହିତ ମିଶି ଆପଣଙ୍କ ଉପସ୍ଥିତିର ସମ୍ମାନ ପ୍ରାର୍ଥନା କରନ୍ତି।",
-      brideLabel: "କନ୍ୟା",
-      groomLabel: "ବର",
-    },
-    jesusBlessing: {
-      eyebrow: "ପ୍ରଭୁଙ୍କ ଆଶୀର୍ବାଦ",
-      verseRef: "ଗଣନା ପୁସ୍ତକ 6:24-26",
-      verseText: "ODIA VERSE NEEDED",
-    },
-    story: {
-      eyebrow: "ଆମର ଯାତ୍ରା",
-      heading: "ଆମର କାହାଣୀ",
-      cards: [
-        {
-          year: "2021",
-          title: "ପ୍ରଥମ ସାକ୍ଷାତ",
-          desc: `${WEDDING.names.or.groomShort} ଓ ${WEDDING.names.or.brideShort} ପ୍ରଥମେ ଏକ ଚର୍ଚ୍ଚ ଯୁବ ସମାଜରେ ସାକ୍ଷାତ ହୋଇଥିଲେ — ଏହା ଏକ ନମୁନା ପାଠ୍ୟ।`,
-        },
-        {
-          year: "2024",
-          title: "ପ୍ରସ୍ତାବ",
-          desc: `ପରିବାର ଓ ବନ୍ଧୁମାନଙ୍କ ମଧ୍ୟରେ ${WEDDING.names.or.groomShort} ${WEDDING.names.or.brideShort}ଙ୍କୁ ବିବାହ ପାଇଁ ପ୍ରସ୍ତାବ ଦେଇଥିଲେ — ଏହା ଏକ ନମୁନା କାହାଣୀ।`,
-        },
-        {
-          year: "2026",
-          title: "ବିବାହ",
-          desc: "ଏହି ଆଶୀର୍ବାଦିତ ବନ୍ଧନକୁ ପାଳନ କରିବାକୁ ଦୁଇ ପରିବାର ପ୍ରସ୍ତୁତ ହେଉଛନ୍ତି — ନମୁନା ପାଠ୍ୟ।",
-        },
-      ],
-    },
-    details: {
-      eyebrow: "ତାରିଖ ମନେ ରଖନ୍ତୁ",
-      heading: "ବିବାହ ବିବରଣୀ",
-      churchLabel: "ପବିତ୍ର ବିବାହ",
-      churchName: "ସେଣ୍ଟ ମେରୀ ଚର୍ଚ୍ଚ, ହାଇଦ୍ରାବାଦ",
-      churchAddress: "12 ଚର୍ଚ୍ଚ ରୋଡ୍, ହାଇଦ୍ରାବାଦ, ତେଲଙ୍ଗାନା",
-      dateLabel: "ତାରିଖ ଓ ସମୟ",
-      dateDisplay: "ଶନିବାର, 12 ଡିସେମ୍ବର 2026",
-      timeDisplay: "ସକାଳ 10:30",
-      receptionLabel: "ଅଭ୍ୟର୍ଥନା",
-      receptionName: "ଗ୍ରାଣ୍ଡ ହଲ୍, ହାଇଦ୍ରାବାଦ",
-      receptionAddress: "45 ସେଲିବ୍ରେସନ୍ ଆଭେନ୍ୟୁ, ହାଇଦ୍ରାବାଦ, ତେଲଙ୍ଗାନା",
-      directionsBtn: "ଚର୍ଚ୍ଚ ପାଇଁ ଦିଗ ନିର୍ଦ୍ଦେଶ",
-      receptionDirectionsBtn: "ଅଭ୍ୟର୍ଥନା ପାଇଁ ଦିଗ ନିର୍ଦ୍ଦେଶ",
-    },
-    blessing: {
-      eyebrow: "ଶେଷ ଆଶୀର୍ବାଦ",
-      heading: "କୃତଜ୍ଞ ହୃଦୟରେ",
-      verseRef2: "1 କରିନ୍ଥୀୟ 13:4-7",
-      verseText2:
-        "ପ୍ରେମ ଦୀର୍ଘସହିଷ୍ଣୁ, ପ୍ରେମ ହିତଜନକ, ଈର୍ଷା କରେ ନାହିଁ, ଆତ୍ମବଡ଼ିମା କରେ ନାହିଁ, ଅହଙ୍କାର କରେ ନାହିଁ, ଅନୁଚିତ ବ୍ୟବହାର କରେ ନାହିଁ, ସ୍ଵାର୍ଥ ଚେଷ୍ଟା କରେ ନାହିଁ, ବିରକ୍ତ ହୁଏ ନାହିଁ, ଅପକାର ସ୍ମରଣରେ ରଖେ ନାହିଁ, ଅଧର୍ମରେ ଆନନ୍ଦ କରେ ନାହିଁ, କିନ୍ତୁ ସତ୍ୟରେ ଆନନ୍ଦ କରେ; ସମସ୍ତ ସହ୍ୟ କରେ, ସମସ୍ତ ବିଶ୍ଵାସ କରେ, ସମସ୍ତ ଭରସା କରେ, ସମସ୍ତ ବିଷୟରେ ଧୈର୍ଯ୍ୟ ଧରି ରହେ।",
-      verseRef3: "ରୂତ 1:16",
-      verseText3:
-        "ରୂତ କହିଲା, ତୁମ୍ଭକୁ ତ୍ୟାଗ କରି ତୁମ୍ଭର ପଶ୍ଚାଦ୍ଗମନ କରିବାରୁ ଫେରି ଯିବାକୁ ମୋତେ ବିନୟ ନ କର, ଯେହେତୁ ତୁମ୍ଭେ ଯେଉଁଠାକୁ ଯିବ, ମୁଁ ମଧ୍ୟ ସେହିଠାକୁ ଯିବି; ତୁମ୍ଭେ ଯେଉଁଠାରେ ରହିବ, ମୁଁ ମଧ୍ୟ ସେହିଠାରେ ରହିବି; ତୁମ୍ଭର ଲୋକ ହିଁ ମୋହର ଲୋକ ଓ ତୁମ୍ଭର ପରମେଶ୍ଵର ହିଁ ମୋହର ପରମେଶ୍ଵର ହେବେ।",
-      closing:
-        "ଆପଣଙ୍କ ପ୍ରେମ ଓ ପ୍ରାର୍ଥନା ପାଇଁ ଆମେ ପରମେଶ୍ଵରଙ୍କୁ ଧନ୍ୟବାଦ ଦେଉଛୁ, ଏବଂ ଏହି ଆନନ୍ଦର ଦିନକୁ ଆପଣଙ୍କ ସହିତ ପାଳନ କରିବାକୁ ଅପେକ୍ଷା କରିଛୁ।",
-      signature: `ସ୍ନେହରେ, ${WEDDING.names.or.groom} ଓ ${WEDDING.names.or.bride}`,
-      musicOn: "ସଙ୍ଗୀତ ଅନ୍",
-      musicOff: "ସଙ୍ଗୀତ ଅଫ୍",
-      rsvp: "ଆମ କାହାଣୀର ଅଂଶ ହେବା ପାଇଁ ଧନ୍ୟବାଦ।",
-    },
-  },
 };
 
 // Audio placeholder — replace with a real royalty-free track before publishing.
@@ -513,7 +316,7 @@ export function getUrlParams(): { name: string | null; lang: LangCode | null } {
   const params = new URLSearchParams(window.location.search);
   const name = params.get("name");
   const langParam = params.get("lang");
-  const validLangs: LangCode[] = ["en", "te", "hi", "or"];
+  const validLangs: LangCode[] = ["en", "te"];
   const lang = validLangs.includes(langParam as LangCode) ? (langParam as LangCode) : null;
   return { name, lang };
 }
@@ -540,7 +343,7 @@ export function buildNarration(
 ): string {
   const t = TRANSLATIONS[lang];
   // Speak "&" as a real word so voices don't say "ampersand".
-  const AND: Record<LangCode, string> = { en: "and", te: "మరియు", hi: "और", or: "ଓ" };
+  const AND: Record<LangCode, string> = { en: "and", te: "మరియు" };
   const say = (s: string) => s.replace(/&/g, AND[lang]);
 
   switch (scene) {
@@ -553,7 +356,6 @@ export function buildNarration(
     case "couple":
       return `${say(t.couple.heading)}. ${t.couple.subtext}`;
     case "jesusBlessing": {
-      if (t.jesusBlessing.verseText === "ODIA VERSE NEEDED") return "";
       return `${t.jesusBlessing.verseText} ${t.jesusBlessing.verseRef}`;
     }
     case "story":

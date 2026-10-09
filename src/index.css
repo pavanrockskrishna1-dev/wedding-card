@@ -4,8 +4,6 @@
   --font-display: "Cormorant Garamond", "Noto Sans", serif;
   --font-noto-en: "Noto Sans", sans-serif;
   --font-noto-te: "Noto Sans Telugu", "Noto Sans", sans-serif;
-  --font-noto-hi: "Noto Sans Devanagari", "Noto Sans", sans-serif;
-  --font-noto-or: "Noto Sans Oriya", "Noto Sans", sans-serif;
 
   --color-ivory: #faf6ee;
   --color-parchment: #f3e9d7;
@@ -36,12 +34,6 @@ body {
 }
 .font-noto-te {
   font-family: var(--font-noto-te);
-}
-.font-noto-hi {
-  font-family: var(--font-noto-hi);
-}
-.font-noto-or {
-  font-family: var(--font-noto-or);
 }
 
 /* ---------- Shared scene utility classes ---------- */

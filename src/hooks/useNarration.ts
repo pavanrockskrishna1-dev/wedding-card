@@ -5,8 +5,6 @@ import type { LangCode } from "@/config";
 const VOICE_LANG: Record<LangCode, string> = {
   en: "en-IN",
   te: "te-IN",
-  hi: "hi-IN",
-  or: "or-IN",
 };
 
 function pickVoice(targetLang: string): SpeechSynthesisVoice | null {
