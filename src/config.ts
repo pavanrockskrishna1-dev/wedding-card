@@ -16,6 +16,10 @@ export type LangCode = "en" | "te" | "hi" | "or";
 // hands from above are shown, with the same verse.
 export const SHOW_JESUS_FIGURE = true;
 
+// Default state for voice narration (window.speechSynthesis). User can toggle
+// from the small speaker button in the top-right of the app.
+export const NARRATION_ON = true;
+
 export const LANGUAGES: { code: LangCode; nativeLabel: string; englishLabel: string; fontClass: string }[] = [
   { code: "en", nativeLabel: "English", englishLabel: "English", fontClass: "font-noto-en" },
   { code: "te", nativeLabel: "తెలుగు", englishLabel: "Telugu", fontClass: "font-noto-te" },
@@ -512,4 +516,53 @@ export function getUrlParams(): { name: string | null; lang: LangCode | null } {
   const validLangs: LangCode[] = ["en", "te", "hi", "or"];
   const lang = validLangs.includes(langParam as LangCode) ? (langParam as LangCode) : null;
   return { name, lang };
+}
+
+// ============================================================================
+// Narration builder — assembles the voice narration for each scene ONLY from
+// strings already present in TRANSLATIONS and WEDDING. No new translated
+// sentences are introduced here.
+// ============================================================================
+
+export type NarrationSceneKey =
+  | "glass"
+  | "cord"
+  | "couple"
+  | "jesusBlessing"
+  | "story"
+  | "details"
+  | "blessing";
+
+export function buildNarration(
+  scene: NarrationSceneKey,
+  lang: LangCode,
+  guestName: string | null
+): string {
+  const t = TRANSLATIONS[lang];
+  // Speak "&" as a real word so voices don't say "ampersand".
+  const AND: Record<LangCode, string> = { en: "and", te: "మరియు", hi: "और", or: "ଓ" };
+  const say = (s: string) => s.replace(/&/g, AND[lang]);
+
+  switch (scene) {
+    case "glass": {
+      const who = guestName && guestName.trim() ? guestName.trim() : t.common.defaultGuest;
+      return `${t.common.dearPrefix} ${who}. ${t.stainedGlass.message} ${say(t.couple.heading)}`;
+    }
+    case "cord":
+      return `${t.cord.verseText} ${t.cord.verseRef}`;
+    case "couple":
+      return `${say(t.couple.heading)}. ${t.couple.subtext}`;
+    case "jesusBlessing": {
+      if (t.jesusBlessing.verseText === "ODIA VERSE NEEDED") return "";
+      return `${t.jesusBlessing.verseText} ${t.jesusBlessing.verseRef}`;
+    }
+    case "story":
+      return "";
+    case "details":
+      return `${t.details.churchName}. ${t.details.dateDisplay}. ${t.details.timeDisplay}. ${t.details.receptionName}`;
+    case "blessing":
+      return `${t.blessing.closing} ${say(t.blessing.signature)}`;
+    default:
+      return "";
+  }
 }
