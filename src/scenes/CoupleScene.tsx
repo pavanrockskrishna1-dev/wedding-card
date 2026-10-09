@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { TRANSLATIONS, WEDDING, type LangCode } from "@/config";
+import { TRANSLATIONS, type LangCode } from "@/config";
 import Silhouette from "@/components/Silhouette";
 
 interface Props {
@@ -95,8 +95,8 @@ export default function CoupleScene({ lang }: Props) {
       </div>
 
       <div className="max-w-sm">
-        <h2 className="couple-copy font-display text-3xl font-semibold text-amber-50">
-          {WEDDING.brideName} &amp; {WEDDING.groomName}
+        <h2 className={`couple-copy text-3xl font-semibold text-amber-50 ${t.meta.headingFontClass}`}>
+          {t.couple.heading}
         </h2>
         <p className={`couple-copy mt-2 text-sm leading-relaxed text-amber-50/80 ${t.meta.fontClass}`}>
           {t.couple.subtext}

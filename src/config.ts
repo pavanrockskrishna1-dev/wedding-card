@@ -20,12 +20,17 @@ export const LANGUAGES: { code: LangCode; nativeLabel: string; englishLabel: str
 
 // Couple + event facts (dummy data) — language-independent
 export const WEDDING = {
-  brideName: "Anna",
-  groomName: "David",
+  // ⭐ COUPLE NAMES — change them HERE ONLY. Every scene reads from this.
+  names: {
+    en: { groom: "Ashish Kamada", bride: "Easter Rani", groomShort: "Ashish", brideShort: "Easter" },
+    te: { groom: "ఆశీష్ కమాడ", bride: "ఈస్టర్ రాణి", groomShort: "ఆశీష్", brideShort: "ఈస్టర్" },
+    hi: { groom: "आशीष कमाडा", bride: "ईस्टर रानी", groomShort: "आशीष", brideShort: "ईस्टर" },
+    or: { groom: "ଆଶୀଷ କମାଡା", bride: "ଇଷ୍ଟର ରାଣୀ", groomShort: "ଆଶୀଷ", brideShort: "ଇଷ୍ଟର" },
+  } as Record<"en" | "te" | "hi" | "or", { groom: string; bride: string; groomShort: string; brideShort: string }>,
   dateISO: "2026-12-12T10:30:00+05:30",
   mapsLink: "https://maps.google.com/?q=St+Marys+Church+Hyderabad",
   receptionMapsLink: "https://maps.google.com/?q=Grand+Hall+Hyderabad",
-  heroInitials: "A & D",
+  heroInitials: "A & E",
 };
 
 interface Translation {
@@ -131,7 +136,7 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
     },
     couple: {
       eyebrow: "Two Hearts, One Faith",
-      heading: "Anna & David",
+      heading: `${WEDDING.names.en.groomShort} & ${WEDDING.names.en.brideShort}`,
       subtext:
         "Together with their families, request the honour of your presence as they begin their new life in Christ.",
       brideLabel: "The Bride",
@@ -144,12 +149,12 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
         {
           year: "2021",
           title: "First Meeting",
-          desc: "We first met at a church youth fellowship, placeholder text about how Anna and David's paths crossed.",
+          desc: `We first met at a church youth fellowship, placeholder text about how ${WEDDING.names.en.groomShort} and ${WEDDING.names.en.brideShort}'s paths crossed.`,
         },
         {
           year: "2024",
           title: "The Proposal",
-          desc: "Placeholder story of the proposal — David asked Anna to marry him with family and friends nearby.",
+          desc: `Placeholder story of the proposal — ${WEDDING.names.en.groomShort} asked ${WEDDING.names.en.brideShort} to marry him with family and friends nearby.`,
         },
         {
           year: "2026",
@@ -184,7 +189,7 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
         "And Ruth said, Intreat me not to leave thee, or to return from following after thee: for whither thou goest, I will go; and where thou lodgest, I will lodge: thy people shall be my people, and thy God my God.",
       closing:
         "We thank God for your love and prayers, and we look forward to celebrating this joyous day with you.",
-      signature: "With love, Anna & David",
+      signature: `With love, ${WEDDING.names.en.groom} & ${WEDDING.names.en.bride}`,
       musicOn: "Music On",
       musicOff: "Music Off",
       rsvp: "Thank you for being part of our story.",
@@ -221,7 +226,7 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
     },
     couple: {
       eyebrow: "రెండు హృదయాలు, ఒకే విశ్వాసం",
-      heading: "అన్నా & డేవిడ్",
+      heading: `${WEDDING.names.te.groomShort} & ${WEDDING.names.te.brideShort}`,
       subtext:
         "క్రీస్తులో తమ నూతన జీవితాన్ని ప్రారంభించబోతున్న ఈ సందర్భంగా, తమ కుటుంబాలతో కలిసి మీ సమక్షాన్ని కోరుకుంటున్నారు.",
       brideLabel: "వధువు",
@@ -234,12 +239,12 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
         {
           year: "2021",
           title: "మొదటి పరిచయం",
-          desc: "అన్నా మరియు డేవిడ్ ఒక చర్చి యువజన సమాజంలో మొదటిసారి కలుసుకున్నారు — ఇది నమూనా వచనం.",
+          desc: `${WEDDING.names.te.groomShort} మరియు ${WEDDING.names.te.brideShort} ఒక చర్చి యువజన సమాజంలో మొదటిసారి కలుసుకున్నారు — ఇది నమూనా వచనం.`,
         },
         {
           year: "2024",
           title: "ప్రతిపాదన",
-          desc: "కుటుంబం మరియు స్నేహితుల సమక్షంలో డేవిడ్ అన్నాను వివాహం చేసుకొమ్మని అడిగిన నమూనా కథనం.",
+          desc: `కుటుంబం మరియు స్నేహితుల సమక్షంలో ${WEDDING.names.te.groomShort} ${WEDDING.names.te.brideShort}‌ను వివాహం చేసుకొమ్మని అడిగిన నమూనా కథనం.`,
         },
         {
           year: "2026",
@@ -274,7 +279,7 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
         "నీవు వెళ్లు చోటికే నేను వచ్చెదను, నీవు నివసించుచోటనే నేను నివసించెదను, నీ జనమే నా జనము నీ దేవుడే నా దేవుడు.",
       closing:
         "మీ ప్రేమకు మరియు ప్రార్థనలకు దేవునికి కృతజ్ఞతలు తెలుపుతున్నాము, ఈ ఆనంద దినాన్ని మీతో కలిసి జరుపుకోవాలని ఎదురుచూస్తున్నాము.",
-      signature: "ప్రేమతో, అన్నా & డేవిడ్",
+      signature: `ప్రేమతో, ${WEDDING.names.te.groom} & ${WEDDING.names.te.bride}`,
       musicOn: "సంగీతం ఆన్",
       musicOff: "సంగీతం ఆఫ్",
       rsvp: "మా కథలో భాగమైనందుకు ధన్యవాదాలు.",
@@ -311,7 +316,7 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
     },
     couple: {
       eyebrow: "दो हृदय, एक विश्वास",
-      heading: "अन्ना और डेविड",
+      heading: `${WEDDING.names.hi.groomShort} और ${WEDDING.names.hi.brideShort}`,
       subtext:
         "अपने परिवारों के साथ मिलकर, मसीह में अपने नए जीवन की शुरुआत के इस शुभ अवसर पर आपकी उपस्थिति की विनम्र प्रार्थना करते हैं।",
       brideLabel: "वधू",
@@ -324,12 +329,12 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
         {
           year: "2021",
           title: "पहली मुलाक़ात",
-          desc: "अन्ना और डेविड पहली बार एक चर्च युवा सभा में मिले थे — यह एक नमूना पाठ है।",
+          desc: `${WEDDING.names.hi.groomShort} और ${WEDDING.names.hi.brideShort} पहली बार एक चर्च युवा सभा में मिले थे — यह एक नमूना पाठ है।`,
         },
         {
           year: "2024",
           title: "प्रस्ताव",
-          desc: "परिवार और मित्रों के बीच डेविड ने अन्ना से विवाह का प्रस्ताव रखा — यह एक नमूना कहानी है।",
+          desc: `परिवार और मित्रों के बीच ${WEDDING.names.hi.groomShort} ने ${WEDDING.names.hi.brideShort} से विवाह का प्रस्ताव रखा — यह एक नमूना कहानी है।`,
         },
         {
           year: "2026",
@@ -364,7 +369,7 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
         "रूत बोली, तू मुझ से यह विनती न कर, कि मुझे त्याग या छोड़कर लौट जा; क्योंकि जिधर तू जाए उधर मैं भी जाऊँगी; जहाँ तू टिके वहाँ मैं भी टिकूँगी; तेरे लोग मेरे लोग होंगे, और तेरा परमेश्‍वर मेरा परमेश्‍वर होगा।",
       closing:
         "हम आपके प्रेम और प्रार्थनाओं के लिए परमेश्वर का धन्यवाद करते हैं, और इस आनंदमय दिन को आपके साथ मनाने की प्रतीक्षा कर रहे हैं।",
-      signature: "प्रेम सहित, अन्ना और डेविड",
+      signature: `प्रेम सहित, ${WEDDING.names.hi.groom} और ${WEDDING.names.hi.bride}`,
       musicOn: "संगीत चालू",
       musicOff: "संगीत बंद",
       rsvp: "हमारी कहानी का हिस्सा बनने के लिए धन्यवाद।",
@@ -401,7 +406,7 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
     },
     couple: {
       eyebrow: "ଦୁଇ ହୃଦୟ, ଏକ ବିଶ୍ୱାସ",
-      heading: "ଆନ୍ନା ଓ ଡେଭିଡ୍",
+      heading: `${WEDDING.names.or.groomShort} ଓ ${WEDDING.names.or.brideShort}`,
       subtext:
         "ଖ୍ରୀଷ୍ଟଙ୍କଠାରେ ନିଜ ନୂତନ ଜୀବନ ଆରମ୍ଭ କରୁଥିବା ଏହି ଶୁଭ ଅବସରରେ, ସେମାନେ ନିଜ ପରିବାର ସହିତ ମିଶି ଆପଣଙ୍କ ଉପସ୍ଥିତିର ସମ୍ମାନ ପ୍ରାର୍ଥନା କରନ୍ତି।",
       brideLabel: "କନ୍ୟା",
@@ -414,12 +419,12 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
         {
           year: "2021",
           title: "ପ୍ରଥମ ସାକ୍ଷାତ",
-          desc: "ଆନ୍ନା ଓ ଡେଭିଡ୍ ପ୍ରଥମେ ଏକ ଚର୍ଚ୍ଚ ଯୁବ ସମାଜରେ ସାକ୍ଷାତ ହୋଇଥିଲେ — ଏହା ଏକ ନମୁନା ପାଠ୍ୟ।",
+          desc: `${WEDDING.names.or.groomShort} ଓ ${WEDDING.names.or.brideShort} ପ୍ରଥମେ ଏକ ଚର୍ଚ୍ଚ ଯୁବ ସମାଜରେ ସାକ୍ଷାତ ହୋଇଥିଲେ — ଏହା ଏକ ନମୁନା ପାଠ୍ୟ।`,
         },
         {
           year: "2024",
           title: "ପ୍ରସ୍ତାବ",
-          desc: "ପରିବାର ଓ ବନ୍ଧୁମାନଙ୍କ ମଧ୍ୟରେ ଡେଭିଡ୍ ଆନ୍ନାଙ୍କୁ ବିବାହ ପାଇଁ ପ୍ରସ୍ତାବ ଦେଇଥିଲେ — ଏହା ଏକ ନମୁନା କାହାଣୀ।",
+          desc: `ପରିବାର ଓ ବନ୍ଧୁମାନଙ୍କ ମଧ୍ୟରେ ${WEDDING.names.or.groomShort} ${WEDDING.names.or.brideShort}ଙ୍କୁ ବିବାହ ପାଇଁ ପ୍ରସ୍ତାବ ଦେଇଥିଲେ — ଏହା ଏକ ନମୁନା କାହାଣୀ।`,
         },
         {
           year: "2026",
@@ -454,7 +459,7 @@ export const TRANSLATIONS: Record<LangCode, Translation> = {
         "ରୂତ କହିଲା, ତୁମ୍ଭକୁ ତ୍ୟାଗ କରି ତୁମ୍ଭର ପଶ୍ଚାଦ୍ଗମନ କରିବାରୁ ଫେରି ଯିବାକୁ ମୋତେ ବିନୟ ନ କର, ଯେହେତୁ ତୁମ୍ଭେ ଯେଉଁଠାକୁ ଯିବ, ମୁଁ ମଧ୍ୟ ସେହିଠାକୁ ଯିବି; ତୁମ୍ଭେ ଯେଉଁଠାରେ ରହିବ, ମୁଁ ମଧ୍ୟ ସେହିଠାରେ ରହିବି; ତୁମ୍ଭର ଲୋକ ହିଁ ମୋହର ଲୋକ ଓ ତୁମ୍ଭର ପରମେଶ୍ଵର ହିଁ ମୋହର ପରମେଶ୍ଵର ହେବେ।",
       closing:
         "ଆପଣଙ୍କ ପ୍ରେମ ଓ ପ୍ରାର୍ଥନା ପାଇଁ ଆମେ ପରମେଶ୍ଵରଙ୍କୁ ଧନ୍ୟବାଦ ଦେଉଛୁ, ଏବଂ ଏହି ଆନନ୍ଦର ଦିନକୁ ଆପଣଙ୍କ ସହିତ ପାଳନ କରିବାକୁ ଅପେକ୍ଷା କରିଛୁ।",
-      signature: "ସ୍ନେହରେ, ଆନ୍ନା ଓ ଡେଭିଡ୍",
+      signature: `ସ୍ନେହରେ, ${WEDDING.names.or.groom} ଓ ${WEDDING.names.or.bride}`,
       musicOn: "ସଙ୍ଗୀତ ଅନ୍",
       musicOff: "ସଙ୍ଗୀତ ଅଫ୍",
       rsvp: "ଆମ କାହାଣୀର ଅଂଶ ହେବା ପାଇଁ ଧନ୍ୟବାଦ।",

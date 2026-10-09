@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 import gsap from "gsap";
-import { TRANSLATIONS, WEDDING, type LangCode } from "@/config";
+import { TRANSLATIONS, type LangCode } from "@/config";
 
 interface Props {
   lang: LangCode;
@@ -157,8 +157,8 @@ export default function StainedGlassScene({ lang, guestName }: Props) {
         </p>
         <p className={`glass-greeting mt-2 text-sm leading-relaxed text-amber-50/80 ${t.meta.fontClass}`}>
           {t.stainedGlass.message}{" "}
-          <span className="gold-text font-display text-lg font-semibold">
-            {WEDDING.brideName} &amp; {WEDDING.groomName}
+          <span className={`gold-text text-lg font-semibold ${t.meta.headingFontClass}`}>
+            {t.couple.heading}
           </span>
         </p>
       </div>
